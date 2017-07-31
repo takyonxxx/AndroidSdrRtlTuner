@@ -1,0 +1,71 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fl_base"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+
+        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/fl_analyzerFrame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/fl_controls"
+            tools:context=".MainActivity">
+
+        </FrameLayout>
+
+
+        <LinearLayout
+            android:id="@+id/fl_controls"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="#aa1a001a"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true">
+
+            <Button
+                android:id="@+id/btn_freqMines"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="-" />
+
+            <TextView
+                android:id="@+id/txt_freq"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"/>
+
+            <Button
+                android:id="@+id/btn_freqPlus"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="+" />
+
+            <TextView
+                android:id="@+id/lbl_freqStep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:text=" Step: " />
+
+            <Spinner
+                android:id="@+id/spn_freqStep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="11dp"/>
+
+            <Spinner
+                android:id="@+id/spn_freqBand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="11dp"/>
+
+        </LinearLayout>
+
+</RelativeLayout>
