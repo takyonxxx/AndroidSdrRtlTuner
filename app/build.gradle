@@ -6,10 +6,10 @@ android {
 
     defaultConfig {
         applicationId "com.sdrtuner"
-        minSdkVersion 16
+        minSdkVersion 14
         targetSdkVersion 28
-        versionCode 2
-        versionName "2.0"
+        versionCode 3
+        versionName "3.0"
     }
     buildTypes {
         release {
@@ -21,7 +21,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(':hackrf_android')
-    compile 'com.android.support:appcompat-v7:28.0.0'
+    implementation  fileTree(include: ['*.jar'], dir: 'libs')
+    implementation  project(':hackrf_android')
+    implementation  'com.android.support:appcompat-v7:28.0.0'
 }
