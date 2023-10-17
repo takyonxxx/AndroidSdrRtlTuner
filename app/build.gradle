@@ -1,15 +1,25 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion '28.0.0'
+    signingConfigs {
+        debug {
+            storeFile file('C:\\Users\\TurkayBiliyor\\Desktop\\AndroidSdrRtlTuner\\sdrtunerjar.jks')
+            storePassword '111111'
+            keyPassword '111111'
+            keyAlias 'sdrtuner'
+        }
+    }
+    compileSdk 34
+    buildToolsVersion '34.0.0'
 
     defaultConfig {
         applicationId "com.sdrtuner"
-        minSdkVersion 14
-        targetSdkVersion 28
-        versionCode 3
-        versionName "3.0"
+        minSdkVersion 26  // Increased minSdkVersion
+        targetSdkVersion 34
+        versionCode 4
+        versionName "4.0"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -17,11 +27,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 dependencies {
-    implementation  fileTree(include: ['*.jar'], dir: 'libs')
-    implementation  project(':hackrf_android')
-    implementation  'com.android.support:appcompat-v7:28.0.0'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':hackrf_android')
+    implementation 'androidx.appcompat:appcompat:1.6.1'
 }
+

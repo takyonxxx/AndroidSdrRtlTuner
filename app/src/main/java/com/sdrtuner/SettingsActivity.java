@@ -5,7 +5,9 @@ import android.app.FragmentTransaction;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
@@ -26,15 +28,13 @@ public class SettingsActivity extends AppCompatActivity {
 	}
 
 	@Override
-	public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-		switch (requestCode) {
-			case PERMISSION_REQUEST_LOGGING_WRITE_FILES: {
-				// If request is cancelled, the result arrays are empty.
-				if (grantResults.length <= 0 || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
-					Log.i(LOGTAG, "onRequestPermissionResult: User denied to write files for logging. deactivate setting..");
-					SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-					preferences.edit().putBoolean(getString(R.string.pref_logging), false).apply();
-				}
+	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+		if (requestCode == PERMISSION_REQUEST_LOGGING_WRITE_FILES) {// If request is cancelled, the result arrays are empty.
+			if (grantResults.length <= 0 || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+				Log.i(LOGTAG, "onRequestPermissionResult: User denied to write files for logging. deactivate setting..");
+				SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+				preferences.edit().putBoolean(getString(R.string.pref_logging), false).apply();
 			}
 		}
 	}
